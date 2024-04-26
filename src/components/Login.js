@@ -1,9 +1,30 @@
-import React, { useState } from "react";
+import React, { useState , useRef} from "react";
 import Header from "./Header";
+import checkValidData from "../utils/validate";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errormsg, setErrormsg] = useState(null);
 
+
+  // Refs for email and password inputs
+  const email = useRef(null);
+  const password = useRef(null);
+  const fullName = useRef(null);
+
+
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    const message = checkValidData(
+      email.current.value,
+      password.current.value,
+      fullName
+    );
+    setErrormsg(message);
+    
+
+    // signin / signup
+  }
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
   };
@@ -22,29 +43,32 @@ const Login = () => {
       {/* Forms */}
       <form
         className="w-8/12 md:w-5/12 xl:w-3/12 absolute mx-auto right-0 left-0 my-[20%] md:my-[13%] bg-black p-8 opacity-95 rounded-md text-white"
-        action=""
+        onSubmit={(e) => e.preventDefault()}
       >
         <h1 className="text-3xl py-4 mb-4 font-bold">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignInForm && (
-          <input
+          <input  ref={fullName}
             type="text"
             placeholder="Full Name"
             className="p-4 my-4 w-full bg-gray-700 hover:bg-gray-700"
           />
         )}
-        <input
+        <input ref={email}
           type="text"
           placeholder="Email Address"
           className="p-4 my-4 w-full bg-gray-700 hover:bg-gray-770"
         />
-        <input
+        <input ref={password}
           type="password"
           placeholder="Password"
           className="p-4 my-4 w-full bg-gray-700 hover:bg-gray-770"
         />
-        <button className="p-4 my-4 cursor-pointer bg-red-600 w-full hover:opacity-95">
+        <p className="text-red-500 font-semibold text-lg py-2">{errormsg}</p>
+        <button className="p-4 my-4 cursor-pointer bg-red-600 w-full hover:opacity-95"
+        onClick={handleButtonClick}
+        >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
         <p className="my-6 cursor-pointer  hover:text-zinc-300" onClick={toggleSignInForm}>
