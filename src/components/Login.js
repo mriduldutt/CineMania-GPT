@@ -1,17 +1,24 @@
-import React, { useState , useRef} from "react";
+import React, { useState, useRef } from "react";
 import Header from "./Header";
 import checkValidData from "../utils/validate";
+import { auth } from "../utils/firebase";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errormsg, setErrormsg] = useState(null);
 
-
-  // Refs for email and password inputs
+  
   const email = useRef(null);
   const password = useRef(null);
   const fullName = useRef(null);
 
+  const toggleSignInForm = () => {
+    setIsSignInForm(!isSignInForm);
+  };
 
   const handleButtonClick = (e) => {
     e.preventDefault();
@@ -21,13 +28,45 @@ const Login = () => {
       fullName
     );
     setErrormsg(message);
-    
+    if (message) return;
 
-    // signin / signup
-  }
-  const toggleSignInForm = () => {
-    setIsSignInForm(!isSignInForm);
+    if (!isSignInForm) {
+      // Sign Up Logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          // const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrormsg(errorMessage);
+        });
+    } else {
+      //Sign In Logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          // const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrormsg(errorMessage);
+        });
+    }
   };
+
 
   return (
     <div className="w-full">
@@ -49,29 +88,36 @@ const Login = () => {
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignInForm && (
-          <input  ref={fullName}
+          <input
+            ref={fullName}
             type="text"
             placeholder="Full Name"
             className="p-4 my-4 w-full bg-gray-700 hover:bg-gray-700"
           />
         )}
-        <input ref={email}
+        <input
+          ref={email}
           type="text"
           placeholder="Email Address"
           className="p-4 my-4 w-full bg-gray-700 hover:bg-gray-770"
         />
-        <input ref={password}
+        <input
+          ref={password}
           type="password"
           placeholder="Password"
           className="p-4 my-4 w-full bg-gray-700 hover:bg-gray-770"
         />
         <p className="text-red-500 font-semibold text-lg py-2">{errormsg}</p>
-        <button className="p-4 my-4 cursor-pointer bg-red-600 w-full hover:opacity-95"
-        onClick={handleButtonClick}
+        <button
+          className="p-4 my-4 cursor-pointer bg-red-600 w-full hover:opacity-95"
+          onClick={handleButtonClick}
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
-        <p className="my-6 cursor-pointer  hover:text-zinc-300" onClick={toggleSignInForm}>
+        <p
+          className="my-6 cursor-pointer  hover:text-zinc-300"
+          onClick={toggleSignInForm}
+        >
           {isSignInForm
             ? "New to Netflix? Sign Up"
             : "Already have an account? Sign In Now."}
@@ -79,9 +125,9 @@ const Login = () => {
 
         {!isSignInForm && (
           <p className="py-1 text-red-400">
-            <span className="font-bold">Note:</span>  Password must contain at least one lowercase letter, an
-            uppercase letter, a numeric digit or some special character and
-            should be between 8 and 15 characters.
+            <span className="font-bold">Note:</span> Password must contain at
+            least one lowercase letter, an uppercase letter, a numeric digit or
+            some special character and should be between 8 and 15 characters.
           </p>
         )}
       </form>
