@@ -29,6 +29,7 @@ const Body = () => {
   //   );
   // };
   
+
   const appRouter = createBrowserRouter(
     createRoutesFromElements(
       <Route>
@@ -38,6 +39,8 @@ const Body = () => {
       </Route>
     )
   );
+
+
 
   return (
     <div>

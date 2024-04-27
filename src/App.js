@@ -1,9 +1,13 @@
 import React from 'react';
 import Body from './components/Body';
+import { Provider } from 'react-redux';
+import appReduxStore  from './utils/appReduxStore.js';
 
 function App() {
   return (
-     <Body/>
+    <Provider store={appReduxStore}>
+       <Body/>
+     </Provider>
   );
 }
 

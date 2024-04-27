@@ -10,7 +10,17 @@
     - useRef Hook
  - firebase Setup
  - Deploying app to production
- - Create Signup User Account in firebase 
+ - Create Signup User Account in firebase
+ - Implement  Sign In User API
+ - Create Redux_Store with userRedux-Slice
+ - Implemented Sign out Feature
+ - Update Profile
+
+
+ ## Fetch Movies
+ 
+
+
 
 
 
