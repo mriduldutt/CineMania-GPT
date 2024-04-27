@@ -16,6 +16,10 @@
  - Implemented Sign out Feature
  - Update Profile
 
+ - Bug Fix : if user not logged in Redirect to /browse to Login Page
+ - Bug Fix : we unsubsribe to onAuthStateChange callback
+ - add hardcoded values to the constants file
+
 
  ## Fetch Movies
  
