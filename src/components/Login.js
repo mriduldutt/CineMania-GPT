@@ -7,15 +7,16 @@ import {
   signInWithEmailAndPassword,updateProfile
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addUser } from "../utils/userReduxSlice";
+import { LOGIN_BACKGROUND, USER_PROFILE } from "../utils/constants";
+// import { useDispatch } from "react-redux";
+// import { addUser } from "../utils/userReduxSlice";
 
 const Login = () => {
 
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errormsg, setErrormsg] = useState(null);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
    
   
   const email = useRef(null);
@@ -64,11 +65,13 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: fullName.current.value , 
-            photoURL: "https://avatars.githubusercontent.com/u/65560761?v=4"
+            displayName: fullName.current,
+            photoURL: USER_PROFILE,
           })
           .then(() => {
             // Profile updated!
+
+            console.log(user.displayName + " Profile Updated");
              navigate("/browse");
 
           }).catch((error) => {
@@ -91,7 +94,7 @@ const Login = () => {
       <div>
         <img
           className="fixed object-cover h-screen w-full  -z-10"
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/058eee37-6c24-403a-95bd-7d85d3260ae1/e10ba8a6-b96a-4308-bee4-76fab1ebd6ca/IN-en-20240422-POP_SIGNUP_TWO_WEEKS-perspective_WEB_db9348f2-4d68-4934-b495-6d9d1be5917e_large.jpg"
+          src={LOGIN_BACKGROUND}
           alt="Login-Background Img"
         />
       </div>
