@@ -1,26 +1,28 @@
-import React, { useEffect } from 'react'
+import React from 'react';
 import Header from './Header'
-import { TMDB_API_OPTIONS } from '../utils/constants';
-import { useDispatch } from 'react-redux';
-import { addNowPlayingMovies } from '../utils/moviesReduxSlice';
+import useNowPlayingMovies from '../customHooks/useNowPlayingMovies';
+import MainBackgroundContainer from './MainBackgroundContainer';
+import RecomendationMovieContainer from './RecomendationMovieContainer';
 
 const Browse = () => {
 
-  const dispatch = useDispatch();
-  const getNowPlayingMovies = async () => {
-     const data = await fetch('https://api.themoviedb.org/3/movie/now_playing?page=1', TMDB_API_OPTIONS);
-     const json = await data.json();
-     console.log(json.results);
-     dispatch(addNowPlayingMovies(json.results));
-  };
-
-  useEffect(() => {
-    getNowPlayingMovies();
-  },[]);
-
+  useNowPlayingMovies();
   return (
     <div>
       <Header />
+      <MainBackgroundContainer/>
+      <RecomendationMovieContainer/>
+     
+      {/* 
+       Main Video Conatiner
+         - Movie BG Video
+         - Movie Details/Title
+      
+       Secondary Video Conatiner
+         - Movie List * n
+           - Movie Cards * n 
+MainBackgroundContainer             
+      */}
     </div>
   )
 }
