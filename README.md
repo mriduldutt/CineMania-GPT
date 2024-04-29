@@ -25,6 +25,13 @@
  ## Fetch Movies
   - Register TMDB API & create an app to get access token
   - Get Data from TMDB now playingMovies list
+  - Create movie slice
+  - Custom NowPlaying Movies , update store movies data
+  - Planning for Main & secondary Container
+  - Fetch Data for Trailer Video
+  - Update Store with Trailer Video Data
+  - Embed the youtube video make autoplay and mute
+  
 
 
 
