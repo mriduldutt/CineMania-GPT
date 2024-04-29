@@ -46,7 +46,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
+          // console.log(user);
           navigate("/browse");
         })
         .catch((error) => {
@@ -71,7 +71,7 @@ const Login = () => {
           .then(() => {
             // Profile updated!
 
-            console.log(user.displayName + " Profile Updated");
+            // console.log(user.displayName + " Profile Updated");
              navigate("/browse");
 
           }).catch((error) => {
