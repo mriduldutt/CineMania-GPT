@@ -2,25 +2,19 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import MainVideoTitle from './MainVideoTitle';
 import VideoBackground from './VideoBackground';
+import Loader from "./Loader";
 
 const MainBackgroundContainer = () => {
     
-    
     const movies = useSelector((store)=>store.movies?.nowPlayingMovies);
-    
-    if(!movies) return ;
+    if(!movies) return (<Loader/>);
 
-    const number = Math.floor(Math.random() * movies.length);
-    // console.log(number);
-
-    const {original_title,overview,id} = movies[2];
-    // console.log("id : => " + movies[0].id);
-
+    const {original_title,id,overview,backdrop_path}=movies[0];
 
     return (
-    <div>
+    <div className="bg-stone-900">
       <MainVideoTitle original_title={original_title} overview={overview} />
-      <VideoBackground movieId={id} />
+      <VideoBackground movieId={id}  backgroundImage={backdrop_path} />
 
 
     </div>

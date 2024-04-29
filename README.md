@@ -31,6 +31,14 @@
   - Fetch Data for Trailer Video
   - Update Store with Trailer Video Data
   - Embed the youtube video make autoplay and mute
+  - Build the Secondary Component (name of 'Recommended ')
+  - Build Movie List
+  - Build Movie Card
+  - TMDB IMAGE CDN URL
+  - Made the Browse page amazing 
+  - usePopularMovies CustomHooks
+
+
   
 
 
