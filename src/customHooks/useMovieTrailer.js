@@ -29,7 +29,7 @@ const useMovieTrailer = (movieid) => {
   
    useEffect(() => {
        getMovieVideos();
-   },[])
+   },[]);
   
 }
 

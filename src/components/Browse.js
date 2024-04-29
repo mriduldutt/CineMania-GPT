@@ -11,7 +11,7 @@ const Browse = () => {
     <div>
       <Header />
       <MainBackgroundContainer/>
-      {/* <RecomendationMovieContainer/> */}
+      <RecomendationMovieContainer/>
      
       {/* 
        Main Video Conatiner
