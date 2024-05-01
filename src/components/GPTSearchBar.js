@@ -12,13 +12,13 @@ const GPTSearchBar = () => {
     const searchData = searchText.current.value;
     //Make an API call to GPT API & get Movie Results
      
-    const gptQuery ="Act as a movie recommendation System and suggest some movies for the query " + searchData + ". Only Give 5 movie recommendations, comma seprated like the example result given added . Example Result : The Godfather, The Godfather: Part II, The Dark Knight, 12 Angry Men, Schindler's List, Don , Koi Mil Gaya";
+    // const gptQuery ="Act as a movie recommendation System and suggest some movies for the query " + searchData + ". Only Give 5 movie recommendations, comma seprated like the example result given added . Example Result : The Godfather, The Godfather: Part II, The Dark Knight, 12 Angry Men, Schindler's List, Don , Koi Mil Gaya";
 
-    const gptResults = await openai.chat.completions.create({
-      messages: [{ role: 'user', content: gptQuery }],
-      model: 'gpt-3.5-turbo',
-    }); 
-    console.log(gptResults.choices);  
+    // const gptResults = await openai.chat.completions.create({
+    //   messages: [{ role: 'user', content: gptQuery }],
+    //   model: 'gpt-3.5-turbo',
+    // }); 
+    // console.log(gptResults.choices);  
   }
 
 
