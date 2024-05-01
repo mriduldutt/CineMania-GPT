@@ -40,7 +40,11 @@
 
 
 ## Create a GPT-Search (GPT-API)
- -  
+ -  GPT Search Page
+  - GPT Search Bar
+  - Multi-Language Feature in our App
+  
+  - Integrate GPT API's
 
 
 
