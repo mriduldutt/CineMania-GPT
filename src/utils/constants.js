@@ -37,7 +37,7 @@ export const Supported_Languages = [
 ];
 
 
-export  const OPENAI_KEY="sk-proj-bOO27gCOLbC9s3huy1j3T3BlbkFJY03VUHhd6H6Ajljtwung";
+// export  const OPENAI_KEY="sk-proj-bOO27gCOLbC9s3huy1j3T3BlbkFJY03VUHhd6H6Ajljtwung";
 
 
 
