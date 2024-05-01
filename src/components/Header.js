@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addUser,removeUser } from '../utils/userReduxSlice';
 import { useNavigate } from 'react-router-dom';
 import { LOGO, USER_PROFILE } from '../utils/constants';
-
+import { toggleGPTSearchView} from '../utils/gptreduxslice';
 const Header = () => {
 
   const dispatch = useDispatch();
@@ -14,10 +14,8 @@ const Header = () => {
 
   const handleSignOut = () => {
     signOut(auth).then(() => {
-      // Sign-out successful.
       // navigate("/login");
     }).catch((error) => {
-      // An error happened.
       navigate("/error");
     });
   }
@@ -47,6 +45,12 @@ const Header = () => {
   },[]);
 
 
+  const handleGPTSearchClick = () => {
+    // Toggle the GPT search Component
+    dispatch(toggleGPTSearchView());
+  }
+
+
   return (
     <div className='flex justify-between items-center absolute w-screen px-10 py-2 bg-gradient-to-b from-black z-10'>
       <img className='w-48'
@@ -54,7 +58,18 @@ const Header = () => {
       alt="netflix logo"/>
       
       {user &&      
-       <div className='flex items-center space-x-3 text-white hover:cursor-pointer'>
+       <div className='flex items-center space-x-3 text-white  hover:cursor-pointer mr-5 mt-3'>
+         <select className='text-black text-sm'>
+          <option value="en">English</option>
+          <option value="hi">Hindi</option>
+          <option value="spanish">Spanish</option>
+         </select>
+        <button
+            className="text-black text-lg text-center font-bold bg-orange-100 rounded-lg  p-3 mx-8 my-2 hover:bg-orange-200"
+            onClick={handleGPTSearchClick}
+          >Search 🔎
+          </button>
+
         <img src={USER_PROFILE}
          alt="usericons" />
         <button onClick={handleSignOut} className='text-white text-lg font-semibold   hover:underline '> Sign out</button>

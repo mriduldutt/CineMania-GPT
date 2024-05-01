@@ -15,7 +15,7 @@ const RecomendationMovieContainer = () => {
       <div className=" w-full pt-8 bg-black z-20 ">
         <div className="-mt-40 pl-12 relative">
           <MovieList title="Now Playing" movies={nowPlayingMovies} />
-          <MovieList title="Now Playing" movies={popular} />
+          <MovieList title="Popular Movies" movies={popular} />
           <MovieList title="Top Rated Movies" movies={topRated} />
           <MovieList title="Up Coming Movies" movies={upComing} />
         </div>

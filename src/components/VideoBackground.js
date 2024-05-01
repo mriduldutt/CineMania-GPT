@@ -14,7 +14,7 @@ const VideoBackground = ({movieId}) => {
       {/* <h1 className='text-3xl text-center'>Video Background</h1> */}
        <embed className='w-screen aspect-video' opacity="0.5"
        src={"https://www.youtube.com/embed/"+trailerVideo?.key
-       + "?controls=0&loop=1&autoplay=1&mute=1"
+      //  + "?controls=0&loop=1&autoplay=1&mute=1"
 }
        frameBorder="0" 
        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
