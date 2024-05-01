@@ -36,6 +36,10 @@ export const Supported_Languages = [
   { identifier: "spanish", name: "Spanish" },
 ];
 
+
+
+
+
 // export const NAV_IMG_URL="https://cdn-icons-png.flaticon.com/128/812/812847.png";
 
 // export const NAV_CROSS_IMG_URL="https://cdn-icons-png.flaticon.com/128/1828/1828666.png";

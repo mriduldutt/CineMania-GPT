@@ -3,7 +3,6 @@ import MovieCards from "./MovieCards";
 
 const MovieList = (props) => {
   const { title, movies } = props;
-  console.log(movies, title);
   return (
     
     <div className="px-6 py-2  text-white">

@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import userSliceReducer from '../utils/userReduxSlice';
 import moviesSliceReducer from '../utils/moviesReduxSlice';
 import gptSliceReducer from '../utils/gptreduxslice';
+import configSliceReducer from '../utils/configReduxSlice';
 
 const appReduxStore = configureStore(
     {
@@ -9,6 +10,7 @@ const appReduxStore = configureStore(
             user: userSliceReducer,
             movies: moviesSliceReducer,
             gpt: gptSliceReducer,
+            config: configSliceReducer,
         }
     }
 );
