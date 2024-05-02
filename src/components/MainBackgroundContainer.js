@@ -12,7 +12,7 @@ const MainBackgroundContainer = () => {
     const {original_title,id,overview,backdrop_path}=movies[0];
 
     return (
-    <div className="bg-stone-900">
+    <div className="bg-stone-900 md:pt-0 pt-[45%]">
       <MainVideoTitle original_title={original_title} overview={overview} />
       <VideoBackground movieId={id}  backgroundImage={backdrop_path} />
 

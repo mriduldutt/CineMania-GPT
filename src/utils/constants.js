@@ -12,22 +12,22 @@ export const TMDB_API_OPTIONS = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjZTg2YjY3YTM5ZjA3NWEwZjAxNGZkMTU4YTI0Y2ViNCIsInN1YiI6IjY2MmU2NjhhMDcyMTY2MDEyNDY5YzE1MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GfFWQLKxZLmCtzYcjBOuakKKWWUOi0WezomQzZDQFzU",
+      "Bearer " + process.env.REACT_APP_TMDB_API_KEY,
   },
 };
 
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
-export const nowPlayingMovies =
+export const nowPlayingMovies_URL =
   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
 
-export const popular =
+export const popular_URL =
   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
 
-export const topRated =
+export const topRated_URL =
   "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
 
-export const upComing =
+export const upComing_URL =
   "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1";
 
 export const Supported_Languages = [
@@ -37,7 +37,7 @@ export const Supported_Languages = [
 ];
 
 
-// export  const OPENAI_KEY="sk-proj-bOO27gCOLbC9s3huy1j3T3BlbkFJY03VUHhd6H6Ajljtwung";
+export  const OPENAI_KEY=process.env.REACT_APP_OPENAI_KEY;
 
 
 

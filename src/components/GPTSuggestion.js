@@ -1,11 +1,39 @@
-import React from 'react'
+import React from "react";
+import { useSelector } from "react-redux";
+import MovieList from "./MovieList";
+import { IMG_CDN_URL } from "../utils/constants";
+import MovieCards from "./MovieCards";
 
 const GPTSuggestion = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  const { searchData, searchResults } = useSelector((store) => store.gpt);
+  if (!searchData) return null;
 
-export default GPTSuggestion
+  return (
+    <div className="mx-auto w-10/12 bg-stone-900 bg-opacity-90">
+      <p className="text-lg text-white font-semibold md:text-3xl m-2 pt-10 mx-10">
+        {searchResults.length !== 0 ? "Movies/Series" : ""}
+      </p>
+      <div className="flex flex-wrap justify-center md:justify-start">
+        {searchResults?.map((movie) => {
+          return (
+            // <Link to={"/movieInfo/" + movie.id} key={movie.id}>
+              <div className="p-2 w-40">
+                {/* <img
+                  className="w-full rounded-lg"
+                  alt="movie-img"
+                  src={IMG_CDN_URL + (movie.poster_path?movie.poster_path:"")}
+                />
+                <p className="text-center text-white break-words">
+                  {movie.title}
+                </p> */}
+
+                <MovieCards posterPath={movie.poster_path} />
+              </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default GPTSuggestion;
