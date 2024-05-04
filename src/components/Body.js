@@ -5,44 +5,60 @@ import {
   createBrowserRouter,
 } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
+import Error from "./Error";
+import MovieInfo from "./MovieInfo";
+import GPTSearhPage from "./GPTSearhPage";
+import PersonPage from "./PersonPage";
+import TvPage from "./TvPage";
+import TvShowPage from "./TvShowPage";
+import TrendingPersonPage from "./TrendingPersonPage";
+import MovieList from "./MovieList";
 
 const Body = () => {
-    const appRouter = createBrowserRouter([
-      {
-          path:"/",
-          element: <Login/>
-      },
-      {
-          path:"/browse",
-          element: <Browse/>
-      }
-    ]);
-
-  // const AppLayout = () => {
-  //   return (
-  //       <div className="app">
-  //         <Login />
-  //         <Outlet />
-  //       </div>
-  //   );
-  // };
-  
-
-  // const appRouter = createBrowserRouter(
-  //   createRoutesFromElements(
-  //     <Route>
-  //       <Route path="/" element={<Login />} />
-  //       <Route path="/login" element={<Login />} />
-  //       <Route path="/browse" element={<Browse/>} />
-  //     </Route>
-  //   )
-  // );
-
-
-
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <Login />,
+      errorElement:<Error/>
+    },
+    {
+      path: "/browse",
+      element: <Browse />,
+    },
+    {
+      path:"/movieInfo/:movieId",
+      element:<MovieInfo/>
+    },
+    {
+      path:"/search",
+      element:<GPTSearhPage/>
+    },
+    // {
+    //   path:"/person/:personId",
+    //   element:<PersonPage/>
+    // },
+    // {
+    //   path:"/tvShow/:showId",
+    //   element:<TvPage/>
+    // },
+    {
+      path:"/movies",
+      element:<MovieList/>
+    },{
+      path:"/tvShow",
+      element:<TvShowPage/>
+    },{
+      path:"/person",
+      element:<TrendingPersonPage/>
+    },
+    // {
+    //   path:"/developerInfo",
+    //   element:<TvShowPage/>
+    // }
+  ]);
   return (
     <div>
-      <RouterProvider router={appRouter} />
+      <RouterProvider router={appRouter}></RouterProvider>
     </div>
   );
 };

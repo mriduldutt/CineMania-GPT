@@ -4,20 +4,22 @@ import { TMDB_API_OPTIONS,Get_Movie_Info_Url1, Get_Movie_Videos_Url } from '../u
 import { addTrailerVideo } from '../utils/moviesReduxSlice';
 
 const useMovieTrailer = (movieid) => {
-    const dispatchEvent = useDispatch();
+    const dispatch = useDispatch();
    
     const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
  
-   const getMovieVideos = async () => {
-    const data=await fetch(Get_Movie_Info_Url1+movieid+Get_Movie_Videos_Url,TMDB_API_OPTIONS);
-       const json = await data.json();
-       const filterData=json.results.filter((data)=>{
-        return data.type="Trailer"
-        })
-       const trailer=filterData.length?filterData[0]:json.results[0];
-       dispatchEvent(addTrailerVideo(trailer));
-   }
-  
+    const getMovieVideos=async (movieId)=>{
+        const data=await fetch(Get_Movie_Info_Url1+movieId+Get_Movie_Videos_Url,TMDB_API_OPTIONS);
+        const json=await data.json();
+
+        console.log(json.results);
+        // const filterData=json.results.filter((data)=>{
+        //     return data.type="Trailer"
+        // })
+
+        // const trailer=filterData.length?filterData[0]:json.results[0];
+        // dispatch(addTrailerVideo(trailer));
+    }
    useEffect(() => {
        !trailerVideo&&getMovieVideos();
    },[]);

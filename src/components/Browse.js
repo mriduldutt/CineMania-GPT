@@ -1,34 +1,43 @@
 import React from "react";
 import Header from "./Header";
 import useNowPlayingMovies from "../customHooks/useNowPlayingMovies";
-import MainBackgroundContainer from "./MainBackgroundContainer";
+import VideoContainer from "./VideoContainer";
 import RecomendationMovieContainer from "./RecomendationMovieContainer";
-import usePopularMovies from "../customHooks/usePopularMovies";
-import useTopRatedMovies from "../customHooks/useTopRatedMovies";
-import useUpComingMovies from "../customHooks/useUpcomingMovies";
+
 import { useSelector } from "react-redux";
 import GPTSearhPage from "./GPTSearhPage";
+import useTrailer from "../customHooks/useTrailer";
+import useTopRated from "../customHooks/useTopRated";
+import usePopular from "../customHooks/usePopular";
+import useUpComing from "../customHooks/useUpcoming";
+import Footer from "./Footer";
 
 const Browse = () => {
-  const showGPTSearch = useSelector((store) => store.gpt?.showGPTSearch);
-
   useNowPlayingMovies();
-  usePopularMovies();
-  useTopRatedMovies();
-  useUpComingMovies();
+  usePopular();
+  useTopRated();
+  useUpComing();
   return (
-    <div className="">
+    <div className="bg-black">
       <Header />
-      {showGPTSearch ? (
-        <GPTSearhPage />
-      ) : (
-        <>
-          <MainBackgroundContainer />
-          <RecomendationMovieContainer />
-        </>
-      )}
+      <VideoContainer />
+      <RecomendationMovieContainer />
+      <Footer/>
     </div>
   );
 };
 
 export default Browse;
+
+// const showGPTSearch = useSelector((store) => store.gpt?.showGPTSearch);
+{/* <div className="">
+<Header />
+{showGPTSearch ? (
+  <GPTSearhPage />
+) : (
+  <>
+    <MainBackgroundContainer />
+    <RecomendationMovieContainer />
+  </>
+)}
+</div> */}
