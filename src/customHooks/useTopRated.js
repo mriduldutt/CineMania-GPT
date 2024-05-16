@@ -1,4 +1,4 @@
-import { API_OPTIONS, TMDB_API_OPTIONS, nowPlayingMovies, topRated } from "../utils/constants";
+import { TMDB_API_OPTIONS, nowPlayingMovies, topRated } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addTopRated } from "../utils/moviesReduxSlice";    
 import { useEffect } from "react";

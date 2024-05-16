@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { API_OPTIONS, Get_Movie_Credits_Url, Get_Movie_Info_Url1, Get_Movie_Info_Url2, Get_Movie_Recommendations_Url, Get_Movie_Videos_Url, TMDB_API_OPTIONS } from "../utils/constants";
+import { Get_Movie_Credits_Url, Get_Movie_Info_Url1, Get_Movie_Info_Url2, Get_Movie_Recommendations_Url, Get_Movie_Videos_Url, TMDB_API_OPTIONS } from "../utils/constants";
 
 const useMovieInfo = (movieId) => {
   const [movieInfo, setMovieInfo] = useState(null);
