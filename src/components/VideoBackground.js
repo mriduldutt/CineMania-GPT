@@ -18,7 +18,6 @@ const {movieId}=props;
         setTrailerId(trailer?.key)
         
     }
-    // console.log("id :",trailerid);
     useEffect(()=>{
         getMovieVideos();
     },[movieId])

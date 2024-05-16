@@ -48,7 +48,6 @@ const Header = () => {
         if(window.location.pathname!=="/"){
           navigate("/");
         }
-        // ...
       }
     });
   }, []);

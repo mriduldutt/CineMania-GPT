@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 // import required modules
 import { Autoplay,Pagination} from 'swiper/modules';
-import ItemCard from "./ItemCard";
+
 
 const MoviesList = ({ title, movies }) => {
   return (

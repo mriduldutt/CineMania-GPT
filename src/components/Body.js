@@ -9,7 +9,6 @@ import Error from "./Error";
 import MovieInfo from "./MovieInfo";
 import TvPage from "./TvPage";
 import TvShowPage from "./TvShowPage";
-// import TrendingPersonPage from "./TrendingPersonPage";
 import GptSearhPage from "./GptSearchPage";
 import Developer from "./Developer";
 import MoviePage from "./MoviePage";
@@ -44,10 +43,7 @@ const Body = () => {
       path:"/tvShow",
       element:<TvShowPage/>
     },
-    // {
-    //   path:"/person",
-    //   element:<TrendingPersonPage/>
-    // },
+
     {
       path:"/developerPage",
       element:<Developer/>

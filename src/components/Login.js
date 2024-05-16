@@ -8,15 +8,13 @@ import {
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { LOGIN_BACKGROUND, USER_PROFILE } from "../utils/constants";
-// import { useDispatch } from "react-redux";
-// import { addUser } from "../utils/userReduxSlice";
+
 
 const Login = () => {
 
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errormsg, setErrormsg] = useState(null);
   const navigate = useNavigate();
-  // const dispatch = useDispatch();
    
   
   const email = useRef(null);
@@ -49,7 +47,6 @@ const Login = () => {
           navigate("/browse");
         })
         .catch((error) => {
-          // const errorCode = error.code;
           const errorMessage = error.message;
           setErrormsg(errorMessage);
         });
@@ -77,7 +74,6 @@ const Login = () => {
           });
         })
         .catch((error) => {
-          // const errorCode = error.code;
           const errorMessage = error.message;
           setErrormsg(errorMessage);
         });

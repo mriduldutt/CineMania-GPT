@@ -1,6 +1,6 @@
 import React from "react";
 import GPTSearchBar from "./GPTSearchBar";
-// import GPTSuggestion from "./GPTSuggestion";
+
 import { LOGIN_BACKGROUND } from "../utils/constants";
 
 
@@ -17,7 +17,6 @@ const GPTSearhPage = () => {
       </div>
 
       <div className=" md:py-5">
-      {/* GPT Search Bar / GPT Movie Suggestions */}
       <GPTSearchBar />
       </div>
 

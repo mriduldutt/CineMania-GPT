@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import lang from "../utils/LanguageConstant";
 import {useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-// import openai from "../utils/openai";
 import {
   IMG_CDN,
   Search_Api_URL1,
@@ -62,7 +61,6 @@ const GPTSearchBar = () => {
     e.preventDefault();
     const searchData = searchText.current.value.split(" ").join("%20");
     getSearchItems(searchData);
-    // toast("Search button clicked");
 
     //Make an API call to GPT API & get Movie Results
 
