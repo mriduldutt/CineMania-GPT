@@ -30,7 +30,7 @@ const TvShowPage = () => {
 
   useEffect(() => {
     getTrendingShows();
-  }, [page]);
+  }, []);
   return (
     <div className="h-screen text-white bg-stone-900 font-serif">
       <Header />
