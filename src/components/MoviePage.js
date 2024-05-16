@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import { API_OPTIONS,Get_Trending_TV_Shows_URL, TMDB_API_OPTIONS} from "../utils/constants";
+import { API_OPTIONS, TMDB_API_OPTIONS} from "../utils/constants";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
 import ItemCard from "./ItemCard";
 import Footer from "./Footer";
+import { Trending_Movies_URL } from "../utils/constants";
 
-const TvShowPage = () => {
-  const [trendingShows, setTrendingShows] = useState([]);
+
+const MoviePage = () => {
+  const [trendingMovies, setTrendingMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
 
-  const getTrendingShows = async () => {
+  const getTrendingMovies = async () => {
     if (totalPages && totalPages === page) return;
     const data = await fetch(
-      Get_Trending_TV_Shows_URL +
+      Trending_Movies_URL +
         page,
       TMDB_API_OPTIONS
     );
@@ -23,37 +25,39 @@ const TvShowPage = () => {
     const filter = await json?.results.filter((data) => {
       return data.poster_path !== null;
     });
-    const list = trendingShows;
+    const list = trendingMovies;
     const newList = await list.concat(filter);
-    setTrendingShows(newList);
+    setTrendingMovies(newList);
   };
 
   useEffect(() => {
-    getTrendingShows();
+    getTrendingMovies();
   }, [page]);
   return (
     <div className="h-screen text-white bg-stone-900 font-serif">
       <Header />
-      <div className="pt-24 bg-stone-900 font-serif">
-        {trendingShows?.length > 0 ? (
+      <div className="pt-24 bg-stone-900">
+        {trendingMovies?.length > 0 ? (
           <div className="w-full mx-auto bg-stone-900 p-10 pt-20">
-            <p className=" text-3xl text-red-400 font-semibold text-center mb-10">Trending Shows</p>
+            <p className=" text-3xl font-semibold text-red-300 mb-10 text-center"> Movies Trending </p>
             <div className="flex mx-auto mt-4 p-2 justify-between flex-wrap">
-              {trendingShows?.map((show) => {
+              {trendingMovies?.map((movie) => {
                 return (
-                  <Link to={"/tvShow/" + show.id} key={show.id}>
+                  <Link to={"/movieInfo/" + movie.id} key={movie.id}>
                     <ItemCard
-                      title={show.original_name}
-                      poster={show.poster_path}
+                      title={movie.original_title}
+                      poster={movie.poster_path}
                     />
                   </Link>
                 );
               })}
             </div>
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center font-serif">
               <button
-                onClick={() => setPage(page + 1)}
-                className="bg-orange-700 hover:bg-orange-800 rounded-lg text-sm p-2"
+                onClick={() =>{
+                  setPage(page + 1)
+                } }
+                className="bg-orange-700 hover:bg-orange-800 mt-10 rounded-lg text-sm p-2"
               >
                 View More
               </button>
@@ -68,4 +72,4 @@ const TvShowPage = () => {
   );
 };
 
-export default TvShowPage;
+export default MoviePage;

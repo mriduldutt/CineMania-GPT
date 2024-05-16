@@ -13,7 +13,6 @@ const CastList = ({casts,title}) => {
         <div className=" flex w-full mx-auto flex-row flex-wrap justify-center">
           {filter.map((cast) => {
             return (
-              <Link to={"/person/"+cast.id } key={cast.id}>
                 <div className="m-2 mx-auto w-32 md:w-44 p-1 ">
                   <img
                     className="rounded-lg"
@@ -23,7 +22,6 @@ const CastList = ({casts,title}) => {
                   <p className="text-center hover:underline">{cast.name}</p>
                   <p className="text-center text-sm">{cast.character}</p>
                 </div>
-                </Link>
             );
           }
           )}

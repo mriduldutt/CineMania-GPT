@@ -7,12 +7,12 @@ import {
 import { RouterProvider } from "react-router-dom";
 import Error from "./Error";
 import MovieInfo from "./MovieInfo";
-import GPTSearhPage from "./GPTSearhPage";
-import PersonPage from "./PersonPage";
 import TvPage from "./TvPage";
 import TvShowPage from "./TvShowPage";
-import TrendingPersonPage from "./TrendingPersonPage";
-import MovieList from "./MovieList";
+// import TrendingPersonPage from "./TrendingPersonPage";
+import GptSearhPage from "./GptSearchPage";
+import Developer from "./Developer";
+import MoviePage from "./MoviePage";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -31,30 +31,27 @@ const Body = () => {
     },
     {
       path:"/search",
-      element:<GPTSearhPage/>
+      element:<GptSearhPage/>
     },
-    // {
-    //   path:"/person/:personId",
-    //   element:<PersonPage/>
-    // },
-    // {
-    //   path:"/tvShow/:showId",
-    //   element:<TvPage/>
-    // },
+    {
+      path:"/tvShow/:showId",
+      element:<TvPage/>
+    },
     {
       path:"/movies",
-      element:<MovieList/>
+      element:<MoviePage/>
     },{
       path:"/tvShow",
       element:<TvShowPage/>
-    },{
-      path:"/person",
-      element:<TrendingPersonPage/>
     },
     // {
-    //   path:"/developerInfo",
-    //   element:<TvShowPage/>
-    // }
+    //   path:"/person",
+    //   element:<TrendingPersonPage/>
+    // },
+    {
+      path:"/developerPage",
+      element:<Developer/>
+    }
   ]);
   return (
     <div>

@@ -1,54 +1,43 @@
-// import React from 'react'
-// import { useSelector } from 'react-redux';
-// import useTrailer from '../customHooks/useTrailer';
+import React from "react";
+import { useEffect,useState } from "react";
+import { TMDB_API_OPTIONS } from "../utils/constants";
 
-// const VideoBackground = ({movieId}) => {
-//   // const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
-  
-//   // useTrailer(movieId);
 
-// //   return (
-// //     <div className='w-screen '>
-// //       {/* <h1 className='text-3xl text-center'>Video Background</h1> */}
-// //        <embed className='w-screen aspect-video' opacity="0.5"
-// //        src={"https://www.youtube.com/embed/"+trailerVideo?.key
-// //       //  + "?controls=0&loop=1&autoplay=1&mute=1"
-// // }
-// //        frameBorder="0" 
-// //        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-// //        title="Youtube Video player" >
-// //        </embed>
-// //           {/* <embed src="https://media.geeksforgeeks.org/wp-content/uploads/20240108102825/mern.mp4" 
-// //         type="video/mp4" width="600" height="400"></embed> */}
-
-// //     </div>
-// //   )
-// }
-
-// export default VideoBackground
-
-import React from 'react'
-
-const VideoBackground = () => {
+const VideoBackground = (props) => {
+ 
+const {movieId}=props;
+  console.log(movieId);
+    const [trailerid,setTrailerId]=useState(null);
+    const getMovieVideos= async()=>{
+        const data= await fetch("https://api.themoviedb.org/3/movie/"+movieId+"/videos?language=en-US",TMDB_API_OPTIONS);
+        const json=await data?.json();
+        console.log(json);
+        const filterData=json?.results.filter(video=>video.type==="Trailer")
+        const trailer=filterData[0];
+        
+        setTrailerId(trailer?.key)
+        
+    }
+    // console.log("id :",trailerid);
+    useEffect(()=>{
+        getMovieVideos();
+    },[movieId])
+    
+    
   return (
-
-    <div className='w-screen'>
-      {/* <h1 className='text-3xl text-center'>Video Background</h1> */}
-       <embed className='w-screen aspect-video' opacity="0.5"
-       src={"https://www.youtube.com/embed/ITHqeoh5_b0?si=tmaK8YrtknABKEhu"
-        // +?.key
-      //  + "?controls=0&loop=1&autoplay=1&mute=1"
-}
-       frameBorder="0" 
-       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-       title="Youtube Video player" >
-       </embed>
-          {/* <embed src="https://media.geeksforgeeks.org/wp-content/uploads/20240108102825/mern.mp4" 
-        type="video/mp4" width="600" height="400"></embed> */}
-
+    <div className='w-full'>
+        <embed className='w-full aspect-video' width="600"   loop="true" autostart="true"     src={"https://www.youtube.com/embed/"+trailerid
+        +"?controls=0&loop&autoplay=1&mute=1" 
+      } controller="false"
+        title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></embed>
     </div>
   )
-}
+};
 
-export default VideoBackground
+export default VideoBackground;
+
+
+
+
+
 

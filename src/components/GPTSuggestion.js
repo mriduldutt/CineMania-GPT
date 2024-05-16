@@ -18,14 +18,7 @@ const GPTSuggestion = () => {
           return (
             // <Link to={"/movieInfo/" + movie.id} key={movie.id}>
               <div className="p-2 w-40">
-                {/* <img
-                  className="w-full rounded-lg"
-                  alt="movie-img"
-                  src={IMG_CDN_URL + (movie.poster_path?movie.poster_path:"")}
-                />
-                <p className="text-center text-white break-words">
-                  {movie.title}
-                </p> */}
+
 
                 <MovieCards posterPath={movie.poster_path} />
               </div>

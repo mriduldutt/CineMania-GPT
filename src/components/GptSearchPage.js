@@ -1,88 +1,94 @@
 import React, { useRef, useState } from "react";
 import lang from "../utils/LanguageConstant";
-import {useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-// import openai from "../utils/openai";
+import Header from "./Header";
 import {
+  API_OPTIONS,
   IMG_CDN,
+  LOGIN_BACKGROUND,
   Search_Api_URL1,
   Search_Api_URL2,
+  Supported_Languages,
   TMDB_API_OPTIONS,
 } from "../utils/constants";
-import Header from "./Header";
+import { Link } from "react-router-dom";
 
+import Footer from "./Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { changeLanguage } from "../utils/configReduxSlice";
 
-const GPTSearchBar = () => {
+const GptSearhPage = () => {
   const langKey = useSelector((store) => store.config.lang);
   const searchText = useRef(null);
+  const dispatch = useDispatch();
+
   const [person, setPerson] = useState(null);
   const [movies, setMovies] = useState(null);
   const [tvShows, setTvShows] = useState(null);
 
   const getSearchItems = async (searchData) => {
-    //Make an API call to GPT API & get Movie Results
     const data = await fetch(
       Search_Api_URL1 + searchData + Search_Api_URL2,
       TMDB_API_OPTIONS
     );
-
     const json = await data.json();
-    console.log(json.results);
-
     const movies = await json.results.filter((movie) => {
       return movie.media_type === "movie";
     });
-
     const movieData = await movies?.filter((movie) => {
       return movie.poster_path !== null;
     });
-
     const person = await json.results.filter((person) => {
       return person.media_type === "person";
     });
-
     const personData = await person?.filter((person) => {
       return person.profile_path !== null;
     });
-
     const tv = await json.results.filter((tv) => {
       return tv.media_type === "tv";
     });
-
     const tvData = await tv?.filter((tv) => {
       return tv.poster_path !== null;
     });
-
     setMovies(movieData);
     setPerson(personData);
     setTvShows(tvData);
   };
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
     const searchData = searchText.current.value.split(" ").join("%20");
     getSearchItems(searchData);
-    // toast("Search button clicked");
+  };
 
-    //Make an API call to GPT API & get Movie Results
-
-    // const gptQuery ="Act as a movie recommendation System and suggest some movies for the query " + searchData + ". Only Give 5 movie recommendations, comma seprated like the example result given added . Example Result : The Godfather, The Godfather: Part II, The Dark Knight, 12 Angry Men, Schindler's List, Don , Koi Mil Gaya";
-
-    // const gptResults = await openai.chat.completions.create({
-    //   messages: [{ role: 'user', content: gptQuery }],
-    //   model: 'gpt-3.5-turbo',
-    // });
-    // const gptMovies = gptResults.choices?.[0].message.content.split(',');
-
-    // const promiseArray = gptMovies.map(movie=>getSearchItems(movie))
-    //  promiseArray -> results [Promise,Promise,Promise,Promise]
-    //  const result = await Promise.all(promiseArray);
-    // dispatch(addGPTSearchResults(result));
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
   };
 
   return (
     <div>
+      <img
+        className="fixed object-cover h-screen w-full  -z-10 opacity-75"
+        src={LOGIN_BACKGROUND}
+        alt="Login-Background Img"
+      />
+      <Header />
+
+ 
       <div className=" w-full pt-40 text-white">
+      <div className="flex justify-center mb-10">
+        <h1 className="text-3xl font-bold m-2 opacity-95">Choose your Language : </h1>
+        <select
+          className="p-2 bg-black text-white m-2 rounded-3xl"
+          onChange={handleLanguageChange}
+        >
+          {Supported_Languages.map((lang) => (
+            <option key={lang.identifier} value={lang.identifier}>
+              {lang.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
         <form
           className="bg-black w-11/12 md:w-8/12 mx-auto border rounded-md"
           onSubmit={(e) => e.preventDefault()}
@@ -101,11 +107,10 @@ const GPTSearchBar = () => {
           </button>
         </form>
       </div>
-
-      <div className="">
+      <div>
         {movies && (
           <div className="mx-auto w-10/12">
-            <p className="text-red-700  font-semibold text-4xl m-2 text-center ">
+            <p className="text-white text-center mt-10 font-semibold text-4xl m-2">
               {movies.length !== 0 ? "Movies" : ""}
             </p>
             <div className="flex flex-wrap justify-center md:justify-start">
@@ -128,10 +133,9 @@ const GPTSearchBar = () => {
             </div>
           </div>
         )}
-
         {tvShows && (
-          <div className="mx-auto mt-10 w-10/12">
-            <p className="text-red-700 text-center mb-10 font-semibold text-4xl m-2">
+          <div className="mx-auto w-10/12">
+            <p className="text-white text-center mt-10 font-semibold text-4xl m-2">
               {tvShows.length !== 0 ? "TV Shows" : ""}
             </p>
             <div className="flex flex-wrap justify-start">
@@ -154,10 +158,9 @@ const GPTSearchBar = () => {
             </div>
           </div>
         )}
-
         {person && (
-          <div className="mx-auto  w-10/12">
-            <p className="text-red-700  text-center font-semibold text-4xl m-2">
+          <div className="mx-auto w-10/12">
+            <p className="text-red-200 text-center mt-10 font-semibold text-4xl m-2">
               {person.length !== 0 ? "People" : ""}
             </p>
             <div className="flex flex-wrap justify-start">
@@ -180,7 +183,6 @@ const GPTSearchBar = () => {
             </div>
           </div>
         )}
-
         {movies?.length === 0 &&
           tvShows?.length === 0 &&
           person?.length === 0 && (
@@ -188,13 +190,9 @@ const GPTSearchBar = () => {
               No result found
             </div>
           )}
-
       </div>
-
-
     </div>
-    
   );
 };
 
-export default GPTSearchBar;
+export default GptSearhPage;

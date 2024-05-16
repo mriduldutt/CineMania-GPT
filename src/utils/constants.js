@@ -45,7 +45,7 @@ export const nowPlayingMovies="https://api.themoviedb.org/3/movie/now_playing?la
 
   export const Get_Trending_Personalities_URL="https://api.themoviedb.org/3/trending/person/day?language=en-US&page=";
 
-  export const Get_Developer_Info_URL="https://api.github.com/users/Kanavd55";
+  export const Get_Developer_Info_URL="https://api.github.com/users/mriduldutt";
 
   export const Error_Img_URL="https://kinsta.com/wp-content/uploads/2021/05/there-has-been-a-critical-error-on-this-website-featured-image.jpeg";
 

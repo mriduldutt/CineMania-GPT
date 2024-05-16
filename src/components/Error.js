@@ -9,7 +9,7 @@ const Error = () => {
     <div className='w-full bg-stone-900 h-screen text-white'>
       <div className='w-10/12 h-full  mx-auto p-4  flex flex-col justify-center flex-wrap items-center'>
       <div className='w-8/12'>
-      {/* <img className=' rounded-3xl' src={Error_Img_URL}/> */}
+      <img className=' rounded-3xl' src={Error_Img_URL}/>
       </div>
       <div className='w-10/12 text-center'>
         <h1 className='text-5xl  m-2 p-2 font-semibold'>{error.status}-{error.statusText}</h1>
