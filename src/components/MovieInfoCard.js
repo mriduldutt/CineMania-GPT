@@ -70,7 +70,9 @@ const MovieInfoCard = ({ movieInfo, trailer }) => {
                   Released date :-{movieInfo.release_date}
                 </p>
                 <div className="flex flex-start">
-                  {trailer ?( <button
+
+                  {trailer ?( <Link to=''>
+                  <button
                     onClick={() => {
                       setShowTrailer(true)
                       toast("Movie Trailer Played");
@@ -78,7 +80,8 @@ const MovieInfoCard = ({ movieInfo, trailer }) => {
                     className="bg-red-700 mx-2 text-white rounded-lg p-3 hover:bg-red-800"
                   >
                     Watch Trailer
-                  </button>):""}
+                  </button>
+                  </Link>):""}
                   <Link
                     to={movieInfo.homepage}
                     target="_blank"

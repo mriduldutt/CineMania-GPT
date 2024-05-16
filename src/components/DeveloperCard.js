@@ -42,14 +42,11 @@ const DeveloperCard = () => {
                   </p>
                   <p className="my-4">
                     <span className="text-red-200 text-xl font-semibold my-3">
-                      About CineUniverse
+                      About CineMania
                     </span>
                     <p className="text-gray-300 break-words my-2">
-                      CineUniverse: Your go-to source for trending movies,
-                      top-rated films, and hot TV shows. Explore, search, and
-                      watch trailers effortlessly with our user-friendly
-                      interface, powered by the reliable TMDB API. Dive into the
-                      world of entertainment today!
+                    About
+CineMania: Your ultimate destination for the latest in trending movies, top-rated films, and sizzling TV shows. Dive into a world of cinematic wonders, where exploration knows no bounds. Our intuitive interface, backed by the trusted TMDB API, makes it effortless to explore, search, and watch trailers.
                     </p>
                   </p>
                   
