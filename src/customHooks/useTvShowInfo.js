@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { API_OPTIONS, Get_Tv_Show_Credits_Url, Get_Tv_Show_Info_Url1, Get_Tv_Show_Info_Url2, TMDB_API_OPTIONS } from '../utils/constants'
+import { Get_Tv_Show_Credits_Url, Get_Tv_Show_Info_Url1, Get_Tv_Show_Info_Url2, TMDB_API_OPTIONS } from '../utils/constants'
 
 const useTvShowInfo = (showId) => {
 

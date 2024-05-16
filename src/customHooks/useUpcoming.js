@@ -1,4 +1,4 @@
-import { API_OPTIONS, TMDB_API_OPTIONS, upComing } from "../utils/constants";
+import { TMDB_API_OPTIONS, upComing } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { addUpComing } from "../utils/moviesReduxSlice";    
 import { useEffect } from "react";

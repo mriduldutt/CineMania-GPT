@@ -1,6 +1,5 @@
 import React from 'react'
 import { IMG_CDN } from '../utils/constants';
-import { Link } from 'react-router-dom';
 
 const CastList = ({casts,title}) => {
 

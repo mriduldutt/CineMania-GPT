@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import { API_OPTIONS, TMDB_API_OPTIONS} from "../utils/constants";
+import { TMDB_API_OPTIONS} from "../utils/constants";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
 import ItemCard from "./ItemCard";

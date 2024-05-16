@@ -42,8 +42,7 @@ const Login = () => {
         email.current.value,
         password.current.value
       )
-        .then((userCredential) => {
-          const user = userCredential.user;
+        .then(() => {
           navigate("/browse");
         })
         .catch((error) => {

@@ -19,4 +19,4 @@ const useTopRatedMovies=()=>{
 
 }
 
-export default addTopRatedMovies;
+export default useTopRatedMovies;

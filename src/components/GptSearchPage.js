@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import lang from "../utils/LanguageConstant";
 import Header from "./Header";
 import {
-  API_OPTIONS,
   IMG_CDN,
   LOGIN_BACKGROUND,
   Search_Api_URL1,
@@ -12,7 +11,6 @@ import {
 } from "../utils/constants";
 import { Link } from "react-router-dom";
 
-import Footer from "./Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { changeLanguage } from "../utils/configReduxSlice";
 
