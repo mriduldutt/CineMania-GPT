@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { IMG_CDN } from "../utils/constants";
-import { Link } from "react-router-dom";
 import Loader from "./Loader";
 
 
@@ -34,13 +34,6 @@ const PersonInfoCard = ({ personInfo }) => {
               <p className="my-6 text-gray-300 ">
                 Place of Birth :-{personInfo.place_of_birth}
               </p>
-              <Link
-                to={personInfo.homepage}
-                target="_blank"
-                className="bg-red-700 text-white rounded-lg p-3 hover:bg-red-800"
-              >
-                More Info
-              </Link>
           </div>
         </div>
       ) : (

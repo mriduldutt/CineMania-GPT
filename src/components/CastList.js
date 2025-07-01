@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { IMG_CDN } from '../utils/constants';
+import { Link } from 'react-router-dom';
 
 const CastList = ({casts,title}) => {
-
+  // console.log(casts);
     const filter=casts?.filter((cast)=>cast.profile_path).slice(0,10);
   return (
     <div className="w-10/12 mx-auto text-white">
@@ -12,7 +14,8 @@ const CastList = ({casts,title}) => {
         <div className=" flex w-full mx-auto flex-row flex-wrap justify-center">
           {filter.map((cast) => {
             return (
-                <div className="m-2 mx-auto w-32 md:w-44 p-1 ">
+              <Link to={`/person/${cast.id}/${cast.gender}`} key={cast.id}>
+                <div  className="m-2 mx-auto w-32 md:w-44 p-1 ">
                   <img
                     className="rounded-lg"
                     src={IMG_CDN + cast.profile_path}
@@ -21,6 +24,7 @@ const CastList = ({casts,title}) => {
                   <p className="text-center hover:underline">{cast.name}</p>
                   <p className="text-center text-sm">{cast.character}</p>
                 </div>
+             </Link>
             );
           }
           )}

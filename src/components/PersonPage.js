@@ -3,18 +3,29 @@ import Header from './Header'
 import { useParams } from 'react-router-dom'
 import usePersonInfo from '../customHooks/usePersonInfo';
 import PersonInfoCard from './PersonInfoCard';
-import MoviesList from './MovieList';
-import Footer from './Footer';
+import { useDispatch } from 'react-redux';
+import { addNowPlayingMovies } from '../utils/moviesReduxSlice';
+import PersonMovies from './PersonMovies';
 
 const PersonPage = () => {
-    const {personId}=useParams();
-    const {personInfo,personMovies}=usePersonInfo(personId);
+    
+    const dispatch = useDispatch();
+    const { personId, gender } = useParams();
+    
+    // console.log(personId, gender);
+
+    const {personMovies,castsBio}=usePersonInfo(personId,gender);
+    dispatch(addNowPlayingMovies(personMovies));
+
+    console.log(castsBio); // this is the bio of the perso
+    
+
+
   return (
     <div className='bg-stone-900'>
       <Header/>
-      <PersonInfoCard personInfo={personInfo}/>
-      <MoviesList title="Known For" movies={personMovies}/>
-      <Footer/>
+      <PersonInfoCard personInfo={castsBio}/> 
+      <PersonMovies/>  
     </div>
   )
 }

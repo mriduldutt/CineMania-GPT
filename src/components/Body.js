@@ -12,6 +12,7 @@ import TvShowPage from "./TvShowPage";
 import GptSearhPage from "./GptSearchPage";
 import Developer from "./Developer";
 import MoviePage from "./MoviePage";
+import PersonPage from "./PersonPage";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -47,6 +48,10 @@ const Body = () => {
     {
       path:"/developerPage",
       element:<Developer/>
+    },
+            {
+      path:"//person/:personId/:gender",
+      element:<PersonPage/>
     }
   ]);
   return (

@@ -1,42 +1,32 @@
 import React from "react";
-import { useEffect,useState } from "react";
-import { TMDB_API_OPTIONS } from "../utils/constants";
 import Loader from "./Loader";
+import {useSelector } from "react-redux";
+import useTrailerMovie from "../customHooks/useTrailerMovie";
 
 
 const VideoBackground = (props) => {
  
-const {movieId}=props;
-  console.log(movieId);
-    const [trailerid,setTrailerId]=useState(null);
-    const getMovieVideos= async()=>{
-        const data= await fetch("https://api.themoviedb.org/3/movie/"+movieId+"/videos?language=en-US",TMDB_API_OPTIONS);
-        const json=await data?.json();
-        console.log(json);
-        const filterData=json?.results.filter(video=>video.type==="Trailer")
-        const trailer=filterData[0];
-        
-        setTrailerId(trailer?.key)
-        
-    }
-    useEffect(()=>{
-        getMovieVideos();
-    },[movieId])
+  const trailerVideo=useSelector(store=>store?.movies?.trailerVideo);
+  useTrailerMovie(props);
     
     
   return (
-    <>
-    {trailerid? (
-    <div className='w-full'>
-        <embed className='w-full aspect-video' width="600"   loop="true" autostart="true"     src={"https://www.youtube.com/embed/"+trailerid
-        +"?controls=0&loop&autoplay=1&mute=1" 
-      } controller="false"
-        title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></embed>
-    </div>
-  ):(
-    <Loader/>
-  )
-    }
+      <>
+      {trailerVideo?.key ? (
+        <div className="relative w-[100vw] h-[100vh] overflow-hidden">
+          {/* Fullscreen Video as Background */}
+          <iframe
+            className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none z-0"
+            src={`https://www.youtube.com/embed/${trailerVideo?.key}?controls=0&loop=1&autoplay=1&mute=1&playlist=${trailerVideo?.key}`}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+        </div>
+      ) : (
+        <Loader />
+      )}
     </>
   )
 };
