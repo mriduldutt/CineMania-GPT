@@ -26,7 +26,7 @@ const MoviePage = () => {
       return data.poster_path !== null;
     });
     const list = trendingMovies;
-    const newList = await list.concat(filter);
+    const newList = list.concat(filter);
     setTrendingMovies(newList);
   };
 
