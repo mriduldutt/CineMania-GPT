@@ -7,6 +7,8 @@ import usePopular from "../customHooks/usePopular";
 import useTopRated from "../customHooks/useTopRated";
 import useUpComing from "../customHooks/useUpcoming";
 import Footer from "./Footer";
+// eslint-disable-next-line no-unused-vars
+import useTrailerMovie from "../customHooks/useTrailerMovie";
 
 const Browse = () => {
   useNowPlayingMovies();
